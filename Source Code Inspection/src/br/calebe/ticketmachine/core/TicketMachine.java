@@ -27,7 +27,7 @@ public class TicketMachine {
             }
         }
         if (!achou) {
-            throw new PapelMoedaInvalidaException();
+            throw new PapelMoedaInvalidaException("Nota inválida");
         }
         this.precoDoBilhete += quantia;
     }
@@ -42,7 +42,7 @@ public class TicketMachine {
 
     public String imprimir() throws SaldoInsuficienteException {
         if (precoDoBilhete < valor) {
-            throw new SaldoInsuficienteException();
+            throw new SaldoInsuficienteException("Saldo insuficiente");
         }
         String result = "*****************\n";
         result += "*** R$ " + precoDoBilhete + ",00 ****\n";
