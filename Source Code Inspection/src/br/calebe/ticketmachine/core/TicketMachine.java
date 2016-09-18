@@ -10,12 +10,12 @@ import java.util.Iterator;
  */
 public class TicketMachine {
 
-    protected int valor;
+    protected int saldo;
     protected int precoDoBilhete;
     protected int[] papelMoeda = {2, 5, 10, 20, 50, 100};
 
-    public TicketMachine(int valor) {
-        this.valor = valor;
+    public TicketMachine(int saldo) {
+        this.saldo = saldo;
         this.precoDoBilhete = 0;
     }
 
@@ -29,24 +29,26 @@ public class TicketMachine {
         if (!achou) {
             throw new PapelMoedaInvalidaException("Nota inválida");
         }
-        this.precoDoBilhete += quantia;
+        this.saldo += quantia;
     }
 
     public int getSaldo() {
-        return precoDoBilhete;
+        return saldo;
     }
 
-    public Iterator<PapelMoeda> getTroco() {
-        return new Troco(this.precoDoBilhete).getIterator();
+    public Iterator getTroco() {
+        Iterator troco = new Troco(this.saldo).getIterator();
+        this.saldo = 0;
+        return troco;
     }
 
     public String imprimir() throws SaldoInsuficienteException {
-        if (precoDoBilhete < valor) {
+        if (saldo < precoDoBilhete) {
             throw new SaldoInsuficienteException("Saldo insulficiente.");
         } else {
-            precoDoBilhete -= valor;
+            saldo -= precoDoBilhete;
             String result = "**************\n";
-            result += " R$ " + precoDoBilhete + ",00 *\n";
+            result += " R$ " + saldo + ",00 *\n";
             result += "**************\n";
             return result;
         }
