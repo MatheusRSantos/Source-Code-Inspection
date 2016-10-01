@@ -3,11 +3,11 @@ package br.calebe.ticketmachine.core;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class PapelMoedaTest {
+public class PapelMoedaTeste {
     
     protected int valor;
     
-    public PapelMoedaTest() {}
+    public PapelMoedaTeste() {}
     
     public void setValor(int valor) {
         this.valor = valor;
@@ -19,8 +19,8 @@ public class PapelMoedaTest {
     
     @Test
     public void testRetornoValorPapelMoeda() {
-        PapelMoedaTest a = new PapelMoedaTest();
-        PapelMoedaTest b = new PapelMoedaTest();
+        PapelMoedaTeste a = new PapelMoedaTeste();
+        PapelMoedaTeste b = new PapelMoedaTeste();
         
         a.setValor(3);
         b.setValor(5);
